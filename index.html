@@ -1,1 +1,100 @@
-<b>mora.jove</b>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mora Jove, Ph.D.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Courier New", Courier, monospace;
+            color: #FFF;
+            background: black;
+        }
+        #matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        .nav {
+            margin: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .nav a {
+            color: #00FF00;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .bio {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+        <h1>Mora Jove, Ph.D.</h1>
+        <div class="nav">
+            <a href="#publications">Publications</a>
+            <a href="#cv">CV</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="bio">
+            <p><b>Environmental bioinformatics fortified by domain expertise</b>
+
+I am a Bioinformatician, Oceanographer and Molecular biologist with a deep-rooted interest in bleeding- edge multi-omics research in dynamic, large-scale environmental biogeochemical systems. Proficient in the tools necessary to collect, process, assemble, annotate, visualize, interpret and communicate complex environmental sequencing data.</p>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // const matrix = 'MACDEFGHIKLMNPQRSTVWY*MACDEFGHIKLMNPQRSTVWY';
+        const matrix = 'ACGT';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#e2552c'; // txt hex col val
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 75);
+    </script>
+</body>
+</html>
