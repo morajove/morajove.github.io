@@ -3,64 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mora Jove, Ph.D.</title>
+    <title>About Mora Jove Groussman, Ph.D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Serif&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --main-color: #e2552c;
+            --accent-color: #f64c02;
+            --bg-color: #000;
+            --text-color: #fb8569;
+        }
+
         body {
             margin: 0;
-            font-family: "Courier New", Courier, monospace;
-            color: #FFF;
-            background: black;
+            font-family: 'Noto Serif', serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
         }
+
         #matrix {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
         }
+
         .content {
             position: relative;
             z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr min(80ch, 90%) 1fr;
+            padding: 20px;
+        }
+
+        .content > * {
+            grid-column: 2;
+        }
+
+        header {
             text-align: center;
             padding: 20px;
-        }
-        .nav {
-            margin: 20px;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            display: inline-block;
-        }
-        .nav a {
-            color: #00FF00;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .bio {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav a {
+            color: #fc3a5b;  
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(253, 51, 88, 0.1);
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(253, 51, 88, 0.2);
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .photo-container {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(253, 51, 88, 0.5);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .previous-name {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        #interests {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #interests h3 {
+            margin-bottom: 15px;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background-color: rgba(253, 51, 88, 0.2);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <canvas id="matrix"></canvas>
     <div class="content">
-        <h1>Mora Jove, Ph.D.</h1>
-        <div class="nav">
-            <a href="#publications">Publications</a>
-            <a href="#cv">CV</a>
-            <a href="#about">About</a>
-        </div>
-        <div class="bio">
-            <p><b>Environmental bioinformatics fortified by domain expertise</b>
+        <header>
+            <h1>Mora Jove Groussman, Ph.D.</h1>
+        </header>
+        <nav>
+            <a href="cv.html">CV</a>
+            <a href="publications.html">publications</a>
+            <a href="about.html">about me</a>
 
-I am a Bioinformatician, Oceanographer and Molecular biologist with a deep-rooted interest in bleeding- edge multi-omics research in dynamic, large-scale environmental biogeochemical systems. Proficient in the tools necessary to collect, process, assemble, annotate, visualize, interpret and communicate complex environmental sequencing data.</p>
-        </div>
+        </nav>
+        <section id="home">
+            <div class="photo-container">
+                <img src="img/rocha_do_chambre.png" 
+                     srcset="img/rocha_do_chambre.png 1x" 
+                     alt="Mora Jove Groussman" 
+                     width="200" 
+                     height="200">
+            </div>
+            <p>
+                As a Bioinformatician, Oceanographer, and Molecular Biologist, I bring a unique perspective to the field of environmental genomics. My work focuses on unraveling the complexities of marine microbial ecosystems through the lens of cutting-edge multi-omics research.
+            </p>
+            <p>
+                My expertise lies in building and executing bioinformatics pipelines for complex real-world data, supported by extensive involvement in research project lifecycles - from experimental design and field sample collection to communicating results through high-impact publications and conference presentations.
+            </p>
+            <p>
+                Driven by cutting-edge microbiome and environmental research, I'm passionate about enhancing the discovery potential of large genetic datasets. My Ph.D. in Oceanography from the University of Washington, advised by E. Virginia Armbrust, has equipped me with unique perspectives and diverse approaches to understanding marine microbial ecosystems.
+            </p>
+            <p>
+                My passion lies in enhancing the discovery potential of large genetic datasets, particularly in the context of microbiome and environmental research. I'm excited about new advances in the field and how they can be applied to better understand our world's oceans.
+            </p>
+            <p class="previous-name">Previously known as Ryan D. Groussman, Ph.D.</p>
+            <p>
+                Currently, I'm seeking my next exciting research and discovery opportunity. If you're looking for a bioinformatician who can navigate both the depths of the ocean and the complexities of big data, let's connect!
+
+                I am seeking my next exciting research and discovery opportunity. Interested employers, please see my CV here and reach out to <a href="mailto:mora@jovian.bio" rel="nofollow noopener noreferrer me"><i aria-hidden="true"></i><span class="label">mora at jovian.bio</span></a>
+            </p>
+
+        </section>
     </div>
     <script>
         const canvas = document.getElementById('matrix');
@@ -69,7 +190,6 @@ I am a Bioinformatician, Oceanographer and Molecular biologist with a deep-roote
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // const matrix = 'MACDEFGHIKLMNPQRSTVWY*MACDEFGHIKLMNPQRSTVWY';
         const matrix = 'ACGT';
         const fontSize = 16;
         const columns = canvas.width / fontSize;
@@ -78,8 +198,7 @@ I am a Bioinformatician, Oceanographer and Molecular biologist with a deep-roote
         function draw() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#e2552c'; // txt hex col val
+            ctx.fillStyle = '#e2552c';
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
@@ -94,7 +213,7 @@ I am a Bioinformatician, Oceanographer and Molecular biologist with a deep-roote
             }
         }
 
-        setInterval(draw, 75);
+        setInterval(draw, 67);
     </script>
 </body>
 </html>
