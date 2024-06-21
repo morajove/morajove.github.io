@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mora Jove Groussman, Ph.D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Serif&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #e2552c;
+            --accent-color: #f64c02;
+            --bg-color: #000;
+            --text-color: #fb8569;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Serif', serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr min(80ch, 90%) 1fr;
+            padding: 20px;
+        }
+
+        .content > * {
+            grid-column: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav a {
+            color: #fc3a5b;  
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(253, 51, 88, 0.1);
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(253, 51, 88, 0.2);
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .photo-container {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(253, 51, 88, 0.5);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .previous-name {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        #interests {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #interests h3 {
+            margin-bottom: 15px;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background-color: rgba(253, 51, 88, 0.2);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+        <header>
+            <h1>About Mora Jove Groussman</h1>
+        </header>
+        <nav>
+            <a href="index.html">home</a>
+            <a href="cv.html">CV</a>
+            <a href="publications.html">publications</a>
+        </nav>
+        <section id="about">
+            <div class="photo-container">
+                <img src="img/rocha_do_chambre.png" 
+                     srcset="img/rocha_do_chambre.png 1x" 
+                     alt="Mora Jove Groussman" 
+                     width="200" 
+                     height="200">
+            </div>
+            <p class="previous-name">Previously known as Ryan D. Groussman, Ph.D.</p>
+            <p>
+                As a Bioinformatician, Oceanographer, and Molecular Biologist, I bring a unique perspective to the field of environmental genomics. My work focuses on unraveling the complexities of marine microbial ecosystems through the lens of cutting-edge multi-omics research.
+            </p>
+            <p>
+                With over a decade of experience in building and executing bioinformatics pipelines for real-world data, I've been involved in every stage of the research process - from experimental design and field sample collection to data analysis and results communication.
+            </p>
+            <p>
+                My passion lies in enhancing the discovery potential of large genetic datasets, particularly in the context of microbiome and environmental research. I'm excited about new advances in the field and how they can be applied to better understand our world's oceans.
+            </p>
+            <section id="interests">
+                <h3>Interests</h3>
+                <div class="interests">
+                    <span class="interest-tag">Bicycling</span>
+                    <span class="interest-tag">Kayaking</span>
+                    <span class="interest-tag">Meditation</span>
+                    <span class="interest-tag">Travel</span>
+                    <span class="interest-tag">Protein Language Models</span>
+                    <span class="interest-tag">Open-source LLMs</span>
+                    <span class="interest-tag">Classic Cyberpunk Novels</span>
+                    <span class="interest-tag">Local Hackerspace Participation</span>
+            </div>
+        </section>
+    </div>
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = 'ACGT';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#e2552c';
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 67);
+    </script>
+</body>
+</html>
