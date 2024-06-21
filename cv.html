@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Mora Jove Groussman, Ph.D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Serif&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #e2552c;
+            --accent-color: #f64c02;
+            --bg-color: #000;
+            --text-color: #fb8569;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Serif', serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr min(80ch, 90%) 1fr;
+            padding: 20px;
+        }
+
+        .content > * {
+            grid-column: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav a {
+            color: #fc3a5b;  
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(253, 51, 88, 0.1);
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(253, 51, 88, 0.2);
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background-color: rgba(226, 85, 44, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(226, 85, 44, 0.2);
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: rgba(226, 85, 44, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(226, 85, 44, 0.2);
+        }
+
+        .pdf-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pdf-link a {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            border: 2px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-link a:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-style: italic;
+            color: #a8a8a8;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+        <header>
+            <h1>Mora Jove Groussman, Ph.D.</h1>
+            <p>Bioinformatics Professional | Oceanographer | Data Scientist</p>
+        </header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="publications.html">Publications</a>
+            <a href="about.html">About</a>
+            <a href="cv.html">CV</a>
+        </nav>
+        <div class="pdf-link">
+            <a href="docs/MoraJoveGroussman_Resume.pdf" target="_blank">Line to one-page resume (PDF)</a>
+        </div>
+        <section id="professional-summary">
+            <h2>Professional Summary</h2>
+            <p>Bioinformatics professional with expertise in multi-modal analysis of high-dimensional data, specializing in marine microbial ecology. Experienced in developing novel algorithms and tools for large-scale genomic and transcriptomic analyses. Skilled in integrating diverse datasets to uncover complex biological interactions and metabolic pathways in marine ecosystems.</p>
+        </section>
+        <section id="skills">
+            <h2>Skills & Domain Knowledge</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Bioinformatics & Data Analysis</h3>
+                    <ul>
+                        <li>Multi-modal analysis of high-dimensional data (NGS, omics, environmental)</li>
+                        <li>Advanced statistical methods and machine learning (scikit-learn)</li>
+                        <li>Expertise in genomics, transcriptomics, proteomics, and metagenomics</li>
+                        <li>Complex data visualization (matplotlib, ggplot2, plotly)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Software Development</h3>
+                    <ul>
+                        <li>Python (biopython, numpy, pandas)</li>
+                        <li>R (Bioconductor, tidyverse)</li>
+                        <li>Linux/Unix shell scripting</li>
+                        <li>Version control (Git) and collaborative development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Management & Cloud Computing</h3>
+                    <ul>
+                        <li>Large-scale dataset handling and relational databases</li>
+                        <li>Cloud platforms (AWS) and High-Performance Computing (SLURM)</li>
+                        <li>Containerization (Docker, Singularity)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Domain Expertise</h3>
+                    <ul>
+                        <li>Molecular & Cellular Biology: biochemistry, metabolism, developmental biology</li>
+                        <li>Microbiology & Ecology: molecular ecology, marine ecosystems</li>
+                        <li>Oceanography: biological, chemical, and physical processes</li>
+                        <li>Systems Biology: integration of multi-scale biological data</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Scientific writing and publication</li>
+                        <li>Project management and team collaboration</li>
+                        <li>Interdisciplinary research experience</li>
+                        <li>Effective communication of complex scientific concepts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="professional-experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Postdoctoral Scholar</h3>
+                <p class="date">January 2023 – January 2024</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+                <ul>
+                    <li>Designed and published MarFERReT, a marine microbial eukaryote protein reference library, adding hundreds of new species and tens of millions of validated reference proteins</li>
+                    <li>Developed pipelines and novel algorithms for reproducible cross-validation of genetic reference data</li>
+                    <li>Generated publicly-available data repositories for nearly 200 million environmental gene sequences and their functional and taxonomic annotations</li>
+                    <li>Created versioned online repositories for project code, documentation, and containerized software packages, enhancing reproducibility and collaboration</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Graduate Research Assistant</h3>
+                <p class="date">June 2016 – December 2022</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+                <ul>
+                    <li>Published 10 papers in peer-reviewed journals; presented research at 5 international conferences</li>
+                    <li>Processed, analyzed and distributed NGS data from 300+ marine samples using Python, R, and Linux shell scripts, advancing understanding of marine biogeochemical cycles</li>
+                    <li>Implemented data visualization techniques to elucidate complex datasets, identifying novel microbial interactions and metabolic pathways</li>
+                    <li>Developed key bioinformatics data pipelines for a novel machine learning study of marine microbial eukaryote metabolism</li>
+                    <li>Applied multi-variate statistics to analyze multi-dimensional transcriptomic datasets encompassing hundreds of organisms and millions of gene sequences</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Teaching Assistant</h3>
+                <p class="date">March 2018 – December 2021</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+                <ul>
+                    <li>Developed course material for the undergraduate courses Marine Biogeochemical Cycles and Integrative Oceanography, enhancing student comprehension and engagement</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Undergraduate Research Assistant</h3>
+                <p class="date">November 2012 – June 2016</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+                <ul>
+                    <li>Contributed to bioinformatic pipeline development using Python, R, and command-line operations</li>
+                    <li>Leveraged Bayesian statistics to elucidate global iron biometabolism</li>
+                    <li>Gained early experience in environmental RNA sequencing analysis</li>
+                    <li>Co-authored 2 publications; presented at 1 international conference</li>
+                </ul>
+            </div>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="experience-item">
+                <h3>Ph.D. in Oceanography</h3>
+                <p class="date">December 2022</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+                <p>Dissertation: "Resolving the molecular ecology of marine microbial eukaryotes with metatranscriptomes."</p>
+            </div>
+            <div class="experience-item">
+                <h3>M.S. in Oceanography</h3>
+                <p class="date">December 2018</p>
+                <p>University of Washington, School of Oceanography, Seattle, WA</p>
+            </div>
+            <div class="experience-item">
+                <h3>B.S. in Molecular, Cellular, and Developmental Biology (magna cum laude)</h3>
+                <p class="date">March 2016</p>
+                <p>University of Washington, College of Arts and Sciences, Seattle, WA</p>
+                <p>Minor in Oceanography | GPA: 3.94/4.0</p>
+            </div>
+        </section>
+        <section id="field-experience">
+            <h2>Field Experience</h2>
+            <ul>
+                <li>Chief Scientist, R/V Rachel Carson (RC0064), Training Cruise, 27-28 September 2021</li>
+                <li>Gradients 3 Cruise, R/V Kilo Moana, 8-30 April 2019</li>
+                <li>Gradients 2 Cruise, R/V Marcus G Langseth, 27 May - 13 June 2017</li>
+                <li>Gradients 1 Cruise, R/V Ka'imikai-O-Kanaloa, 19 April - 4 May 2016</li>
+                <li>VISIONS'14, Installation of Regional Scale Nodes (RSN), R/V Thomas G. Thompson, September 2014</li>
+            </ul>
+        </section>
+        <section id="grants-awards">
+            <h2>Grants, Fellowships, and Awards</h2>
+            <h3>Research Grants and Fellowships</h3>
+            <ul>
+                <li>NASA Space Grant Consortium's Graduate Fellowship Program, University of Washington (2022)</li>
+                <li>XSEDE Grant #OCE200009 (2020): "Metatranscriptome assemblies of microbial eukaryotic and bacterial communities across biogeochemical gradients in the North Pacific Ocean"</li>
+                <li>XSEDE Grant #OCE190002 (2019): "Assembly of the Whole Community Metatranscriptome from the North Pacific Transition Zone Chlorophyll Front"</li>
+                <li>Integral Environmental Big Data Research Fund (2018): "Eukaryotic phytoplankton gene expression in the North Pacific across diel and basin-scale studies"</li>
+                <li>XSEDE Grant #OCE160019 (2016): "Diel changes in eukaryotic gene expression within the North Pacific Subtropical Gyre"</li>
+                <li>ARCS Foundation Fellow (2016-2022)</li>
+            </ul>
+            <h3>Academic Honors and Scholarships</h3>
+            <ul>
+                <li>NSF Graduate Research Fellowship Program (GRFP) Honorable Mention (2016)</li>
+                <li>Levinson Emerging Scholars Award (2014-2016)</li>
+                <li>Washington State Opportunity Scholarship (2012-2015)</li>
+                <li>Mary Gates Endowed Scholarship (2013-2014)</li>
+                <li>The Boeing Company Endowed Scholarship (2012-2013)</li>
+                <li>National Science Foundation S-STEM Scholarship (2012-2013)</li>
+                <li>Broadway High School Alumni Endowed Scholarship for Transfer Students (2013)</li>
+                <li>University of Washington President's List (2013-2016)</li>
+            </ul>
+        </section>
+        <section id="presentations">
+            <h2>Selected Presentations</h2>
+            <ul>
+                <li>Meta-eukomic Seminar 2024, online webinar (Invited speaker): "Using the MarFERReT eukaryotic sequence library for dynamic, custom and reproducible reference libraries"</li>
+                <li>Ocean Sciences Meeting 2020, San Diego, CA: "Diel Gene Expression of Eukaryotic Microplankton in the North Pacific Subtropical Gyre: Metatranscriptomic Windows into Temporal Function, Ecology, and Evolution of Uncultured Microbes" (Oral and poster presentation)</li>
+                <li>ASLO 2019 Aquatic Sciences Meeting, San Juan, PR: "Diel Gene Expression of Eukaryotic Phytoplankton in the North Pacific Subtropical Gyre: Temporal and Functional Niche Differentiation from Metatranscriptomes" (Oral presentation)</li>
+                <li>Ocean Sciences Meeting 2018, Portland, OR: "Eukaryotic Metatranscriptomes of the North Pacific Subtropical Gyre and Transition Zone Chlorophyll Front: Gene Expression Patterns across Time, Space, and Phylogeny" (Poster presentation)</li>
+                <li>4th International Conference on the Molecular Life of Diatoms 2017, Kobe, Japan: "Diel Transcriptional Patterns of Eukaryotic Phytoplankton in the North Pacific Subtropical Gyre" (Poster presentation)</li>
+            </ul>
+        </section>
+        <section id="outreach">
+            <h2>Outreach and Engagement</h2>
+            <h3>Guest Speaking and Presentations</h3>
+            <ul>
+                <li>Invited Speaker, GEODUC Scholars Seminar, University of Washington (February 2, 2024)</li>
+                <li>Oceanography Career Presentation, Nova High School, Seattle, WA (January 26, 2023)</li>
+                <li>Guest Speaker, Ingraham High School, Seattle, WA (March 8, 2018): Topic: Careers in Science and Marine Biology</li>
+                <li>Community Presentation, Sound Water Stewards, Whidbey Island, WA (March 23, 2017): Topic: Plankton and Marine Ecosystems</li>
+                <li>Guest Seminar, University of Washington (February 14, 2017): Course: Ecosystem Services Provided by Marine Environments (ESRM 429)</li>
+            </ul>
+            <h3>Mentorship</h3>
+            <ul>
+                <li>Mentored high school student Sagarika Samavedi, Interlake High School (August 2017 – Winter 2019)</li>
+            </ul>
+            <h3>Community Involvement</h3>
+            <ul>
+                <li>Volunteer, First LGBTQ+ Mindfulness Meditation Retreat, Northwest Vipassana Center (March 16–27, 2022)</li>
+            </ul>
+        </section>
+        <div class="pdf-link">
+            <a href="path/to/your/one-page-cv.pdf" target="_blank">Download One-Page CV (PDF)</a>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = 'ACGT';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#e2552c';
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 75);
+    </script>
+</body>
+</html>

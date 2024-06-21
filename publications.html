@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Mora Jove Groussman, Ph.D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Serif&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #e2552c;
+            --accent-color: #f64c02;
+            --bg-color: #000;
+            --text-color: #fb8569;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Serif', serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr min(80ch, 90%) 1fr;
+            padding: 20px;
+        }
+
+        .content > * {
+            grid-column: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav a {
+            color: #fc3a5b;  
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(253, 51, 88, 0.1);
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(253, 51, 88, 0.2);
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .profile-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .profile-link {
+            display: flex;
+            align-items: center;
+            background-color: rgba(253, 51, 88, 0.2);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .profile-link:hover {
+            background-color: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            transform: translateX(5px);
+        }
+
+
+        .profile-link img {
+            width: 1em;
+            height: 1em;
+            margin-right: 10px;
+        }
+
+        .publication-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .publication-list li {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: rgba(253, 51, 88, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .publication-list li:hover {
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .publication-list a {
+            color: #dd0159;
+            text-decoration: none;
+        }
+
+        .publication-list a:hover {
+            text-decoration: underline;
+        }
+
+        .name-change-notice {
+            font-style: italic;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(253, 51, 88, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+        <div class="content">
+            <header>
+                <h1>Publications</h1>
+                <h2>Mora Jove Groussman, Ph.D.</h2>
+            </header>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="cv.html">CV</a>
+                <a href="publications.html">Publications</a>
+                <a href="about.html">About Me</a>
+            </nav>
+            <section>
+                <div class="profile-links">
+        <a id="cy-effective-orcid-url"
+           class="profile-link"
+           href="https://orcid.org/0000-0001-7874-7217"
+           target="orcid.widget"
+           rel="me noopener noreferrer">
+            <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+                 alt="ORCID iD icon"/>
+            https://orcid.org/0000-0001-7874-7217
+        </a>
+        
+        <a id="cy-google-scholar-url"
+           class="profile-link"
+           href="https://scholar.google.com/citations?user=mm1hCMkAAAAJ"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://scholar.google.com/favicon.ico"
+                 alt="Google Scholar icon"/>
+            Google Scholar Profile
+        </a>
+        
+        <a id="cy-semantic-scholar-url"
+           class="profile-link"
+           href="https://www.semanticscholar.org/author/R.-D.-Groussman/4566595/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://www.semanticscholar.org/favicon.ico"
+                 alt="Semantic Scholar icon"/>
+            Semantic Scholar Profile
+        </a>
+    </div>
+    <div class="name-change-notice">
+                Note: Publications prior to 2024 appear under the name Ryan D. Groussman, reflecting my professional journey and personal growth.
+            </div>
+    <ul class="publication-list">
+                <li><span class="highlight">Groussman, R. D.</span>, Coesel, S. N., Schatz, M., Durham, B. D., & Armbrust, E. V. (2024). The North Pacific Eukaryotic Gene Catalog of metatranscriptome assemblies and annotations. <i>Scientific Data</i>, in revision. <a href="https://doi.org/10.5281/zenodo.10472589">https://doi.org/10.5281/zenodo.10472589</a></li>
+                <li><span class="highlight">Groussman, R. D.</span>, Blaskowski, S., Coesel, S. N., & Armbrust, E. V. (2023). MarFERReT, an open-source, version-controlled reference library of marine microbial eukaryote functional genes. <i>Scientific Data</i>, 10(1), 926. <a href="https://doi.org/10.1038/s41597-023-02842-4">https://doi.org/10.1038/s41597-023-02842-4</a></li>
+                <li>Graff van Creveld, S., Coesel, S. N., Blaskowski, S., <span class="highlight">Groussman, R. D.</span>, Schatz, M. J., & Armbrust, E. V. (2023). Divergent functions of two clades of flavodoxin in diatoms mitigate oxidative stress and iron limitation. <i>Elife</i>, 12, e84392. <a href="https://doi.org/10.7554/elife.84392">https://doi.org/10.7554/elife.84392</a></li>
+                <li>Lambert, B. S., <span class="highlight">Groussman, R.D.</span>, Schatz, M. J., Coesel, S. N., Durham, B. P., Alverson, A. J., … & Armbrust, E. V. (2022). The dynamic trophic architecture of open-ocean protist communities revealed through machine-guided metatranscriptomics. <i>Proceedings of the National Academy of Sciences</i>, 119(7). <a href="https://doi.org/10.1073/pnas.2100916119">https://doi.org/10.1073/pnas.2100916119</a></li>
+                <li>Boysen, A. K., Durham, B. P., Kumler, W., Key, R. S., Heal, K. R., Carlson, L., <span class="highlight">Groussman, R.D.</span>, … & Ingalls, A. E. (2022). Glycine betaine uptake and metabolism in marine microbial communities. <i>Environmental Microbiology</i>. <a href="https://doi.org/10.1111/1462-2920.16020">https://doi.org/10.1111/1462-2920.16020</a></li>
+                <li>Park, J., Durham, B. P., Key, R. S., <span class="highlight">Groussman, R.D.</span>, Pinedo-Gonzalez, P., Hawco, N. J., … & Bundy, R. M. (2022). Siderophore production and utilization by microbes in the North Pacific Ocean. <i>bioRxiv</i>. <a href="https://doi.org/10.1101/2022.02.26.482025">https://doi.org/10.1101/2022.02.26.482025</a></li>
+                <li><span class="highlight">Groussman, R.D</span>., Coesel, S., Durham, B.P., and Armbrust, E.V. (2021). "Diel-regulated transcriptional cascades of microbial eukaryotes in the North Pacific Subtropical Gyre". <i>Frontiers in Microbiology</i>, 2542. <a href="https://doi.org/10.3389/fmicb.2021.682651">https://doi.org/10.3389/fmicb.2021.682651</a></li>
+                <li>Boysen, A. K., Carlson, L. T., Durham, B. P., <span class="highlight">Groussman, R.D.</span>, Aylward, F. O., Ribalet, F., … & Ingalls, A. E. (2021). Particulate Metabolites and Transcripts Reflect Diel Oscillations of Microbial Activity in the Surface Ocean. <i>Msystems</i>, 6(3). <a href="https://doi.org/10.1128/msystems.00896-20">https://doi.org/10.1128/msystems.00896-20</a></li>
+                <li>Coesel, S. N., Durham, B. P., <span class="highlight">Groussman, R.D.</span>, Hu, S. K., Caron, D. A., Morales, R. L., … & Armbrust, E. V. (2021). Diel transcriptional oscillations of light-sensitive regulatory elements in open-ocean eukaryotic plankton communities. <i>Proceedings of the National Academy of Sciences</i>, 118(6). <a href="https://doi.org/10.1073/pnas.2011038118">https://doi.org/10.1073/pnas.2011038118</a></li>
+                <li>Durham, B. P., Boysen, A. K., Carlson, L. T., <span class="highlight">Groussman, R.D.</span>, Heal, K. R., Cain, K. R., … & Armbrust, E. V. (2019). Sulfonate-based networks between eukaryotic phytoplankton and heterotrophic bacteria in the surface ocean. <i>Nature microbiology</i>, 4(10), 1706-1715. <a href="https://doi.org/10.1038/s41564-019-0507-5">https://doi.org/10.1038/s41564-019-0507-5</a></li>
+                <li>Becker, K. W., Collins, J. R., Durham, B. P., <span class="highlight">Groussman, R.D.</span>, White, A. E., Fredricks, H. F., … & Van Mooy, B. A. (2018). Daily changes in phytoplankton lipidomes reveal mechanisms of energy storage in the open ocean. <i>Nature communications</i>, 9(1), 1-9. <a href="https://doi.org/10.1038/s41467-018-07346-z">https://doi.org/10.1038/s41467-018-07346-z</a></li>
+                <li><span class="highlight">Groussman, R.D.</span>, Parker, M. S., & Armbrust, E. V. (2015). Diversity and evolutionary history of iron metabolism genes in diatoms. <i>PLoS One</i>, 10(6), e0129081. <a href="https://doi.org/10.1371/journal.pone.0129081">https://doi.org/10.1371/journal.pone.0129081</a></li>
+                <li>Hennon, G. M., Ashworth, J., <span class="highlight">Groussman, R.D.</span>, Berthiaume, C., Morales, R. L., Baliga, N. S., … & Armbrust, E. V. (2015). Diatom acclimation to elevated CO2 via cAMP signalling and coordinated gene expression. <i>Nature Climate Change</i>, 5(8), 761-765. <a href="https://doi.org/10.1038/nclimate2683">https://doi.org/10.1038/nclimate2683</a></li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = 'ACGT';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#e2552c';
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 67);
+    </script>
+</body>
+</html>
