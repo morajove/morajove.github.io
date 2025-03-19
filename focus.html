@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Areas | Mora J. Groussman, Ph.D. | AI Edge Computing</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #2ca6a4;
+            --accent-color: #1a7b78;
+            --bg-color: #000;
+            --text-color: #85e0dd;
+            --terminal-green: #33ff33;
+            --terminal-cyan: #36a3d9;
+            --terminal-purple: #9933cc;
+            --crt-overlay: rgba(0, 0, 0, 0.03);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                var(--crt-overlay),
+                var(--crt-overlay) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.3;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr min(80ch, 90%) 1fr;
+            padding: 20px;
+        }
+
+        .content > * {
+            grid-column: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid var(--main-color);
+            box-shadow: 0 0 10px rgba(226, 85, 44, 0.3);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--main-color);
+            box-shadow: 0 0 10px rgba(226, 85, 44, 0.3);
+        }
+
+        nav a {
+            color: #fc3a5b;  
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: rgba(253, 51, 88, 0.1);
+        }
+
+        nav a.active {
+            color: var(--terminal-green);
+            background-color: rgba(51, 255, 51, 0.1);
+            border: 1px solid var(--terminal-green);
+            text-shadow: 0 0 5px var(--terminal-green);
+        }
+
+        nav a:hover {
+            color: var(--terminal-green);
+            background-color: rgba(51, 255, 51, 0.1);
+            border: 1px solid var(--terminal-green);
+            text-shadow: 0 0 5px var(--terminal-green);
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--main-color);
+            box-shadow: 0 0 15px rgba(226, 85, 44, 0.2);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px rgba(42, 166, 164, 0.5);
+        }
+
+        h1::after {
+            content: "_";
+            color: var(--terminal-green);
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .highlight {
+            color: var(--terminal-cyan);
+            font-weight: bold;
+            text-shadow: 0 0 3px var(--terminal-cyan);
+        }
+
+        .command-line {
+            border-left: 3px solid var(--terminal-green);
+            padding-left: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .command-prompt::before {
+            content: "$ ";
+            color: var(--terminal-green);
+            text-shadow: 0 0 3px var(--terminal-green);
+        }
+
+        .command-result {
+            color: #cccccc;
+            margin-left: 15px;
+            border-left: 2px solid rgba(51, 255, 51, 0.3);
+            padding-left: 10px;
+        }
+
+        .focus-area {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(42, 166, 164, 0.05);
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .focus-area:hover {
+            background-color: rgba(42, 166, 164, 0.1);
+            transform: translateX(3px);
+        }
+
+        .focus-area h3 {
+            color: var(--terminal-cyan);
+            border-bottom: 1px dashed rgba(42, 166, 164, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .focus-area p {
+            margin-top: 15px;
+        }
+
+        .focus-area ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .focus-area ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .focus-area ul li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--terminal-green);
+        }
+
+        .key-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background-color: rgba(51, 255, 51, 0.1);
+            color: var(--terminal-green);
+            border: 1px solid rgba(51, 255, 51, 0.3);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(51, 255, 51, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .system-diagram {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .system-diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 5px;
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+        <header>
+            <h1>Focal Domains</h1>
+            <p>Where AI Edge Computing meets Ecological Intelligence</p>
+        </header>
+        <nav>
+            <a href="index.html">~/</a>
+            <a href="focus.html" class="active">~/focus</a>
+            <a href="projects.html">~/projects</a>
+            <a href="resources.html">~/resources</a>
+            <a href="links.html">~/links</a>
+        </nav>
+        
+        <section>
+            <div class="command-line">
+                <p class="command-prompt">cat ecological_ai_manifesto.txt</p>
+                <p class="command-result">AI systems should not simply extract value from the environment but actively contribute to its regeneration and resilience. By applying biomimetic principles and ecological understanding to AI architecture, we can create technology that operates within planetary boundaries while enhancing human capabilities.</p>
+            </div>
+            
+            <p>My work operates at the convergence of three distinct but interconnected domains, creating a unique interdisciplinary approach to AI Edge Computing that integrates biological systems thinking with technological innovation.</p>
+            
+            <div class="focus-area">
+                <h3>AI Edge Computing Architecture</h3>
+                <p>Building decentralized, resilient computing infrastructure that operates at the edge - closer to data sources and with reduced dependency on centralized cloud systems.</p>
+                <ul>
+                    <li>Designing computational frameworks optimized for resource-constrained environments</li>
+                    <li>Implementing FOSS principles to create accessible, transparent, and community-oriented systems</li>
+                    <li>Developing model compression and optimization techniques for efficient local deployment</li>
+                    <li>Creating NixOS-based reproducible computing environments for future-proof deployment</li>
+                </ul>
+                <div class="key-skills">
+                    <span class="skill-tag">Model Optimization</span>
+                    <span class="skill-tag">Embedded Systems</span>
+                    <span class="skill-tag">Distributed Computing</span>
+                    <span class="skill-tag">NixOS</span>
+                    <span class="skill-tag">Containerization</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Systems Architecture</span>
+                </div>
+            </div>
+            
+            <div class="focus-area">
+                <h3>Bioinformatics & Multi-modal Data Integration</h3>
+                <p>Leveraging extensive experience in processing and analyzing complex biological data sets to develop advanced data integration frameworks for AI systems.</p>
+                <ul>
+                    <li>Creating multi-modal frameworks that integrate text, image, and structured biological data</li>
+                    <li>Developing interfaces between protein language models and biological ontologies</li>
+                    <li>Applying genomics and transcriptomics analysis techniques to complex data problems</li>
+                    <li>Building data pipelines for processing terabytes of heterogeneous data</li>
+                </ul>
+                <div class="key-skills">
+                    <span class="skill-tag">Genomics</span>
+                    <span class="skill-tag">Transcriptomics</span>
+                    <span class="skill-tag">Large Dataset Analysis</span>
+                    <span class="skill-tag">Statistical Modeling</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Protein Language Models</span>
+                    <span class="skill-tag">Biological Ontologies</span>
+                </div>
+            </div>
+            
+            <div class="focus-area">
+                <h3>Planetary Intelligence Systems</h3>
+                <p>Integrating ecological principles and systems thinking into AI architecture to create technology that operates in harmony with planetary boundaries.</p>
+                <ul>
+                    <li>Developing ecological intelligence frameworks that anticipate planetary adaptation needs</li>
+                    <li>Designing technology that mimics natural systems' resilience and adaptability</li>
+                    <li>Creating computational models inspired by complex biological networks</li>
+                    <li>Implementing resource-aware computing that minimizes ecological footprint</li>
+                </ul>
+                <div class="key-skills">
+                    <span class="skill-tag">Systems Thinking</span>
+                    <span class="skill-tag">Biomimicry</span>
+                    <span class="skill-tag">Resilience Engineering</span>
+                    <span class="skill-tag">Ecological Modeling</span>
+                    <span class="skill-tag">Sustainable Computing</span>
+                    <span class="skill-tag">Complex Systems Analysis</span>
+                </div>
+            </div>
+            
+            <div class="command-line">
+                <p class="command-prompt">grep "synergy" interdisciplinary_approach.md</p>
+                <p class="command-result">The true power emerges at the intersection of these domains, where biological understanding informs technological design, and ecological thinking creates more resilient computing systems. This interdisciplinary approach enables solutions that are technically sophisticated while remaining grounded in planetary awareness.</p>
+            </div>
+            
+            <h3>Current Applications</h3>
+            <p>I'm currently focused on applying this interdisciplinary approach to several key projects:</p>
+            <ul>
+                <li><span class="highlight">BioDOG (Biological Database-Oriented Generation)</span> - A framework interfacing protein language models with biological ontologies to enable enhanced analysis of complex biological systems</li>
+                <li><span class="highlight">Mahakala</span> - A lightweight, edge-deployable AI system designed for resource-constrained environments with ecological awareness built into its architecture</li>
+                <li><span class="highlight">Localized LLM Deployment</span> - Creating accessible infrastructure for community-oriented AI technology that respects privacy and operates independently of centralized cloud systems</li>
+            </ul>
+            
+            <h3>Interdisciplinary Advantage</h3>
+            <p>My background in oceanography and bioinformatics provides unique insights that directly translate to AI Edge Computing challenges:</p>
+            <div class="key-skills">
+                <span class="skill-tag">Large Dataset Analysis → Handling sensor networks</span>
+                <span class="skill-tag">Complex Systems Modeling → AI architecture design</span>
+                <span class="skill-tag">Environmental Adaptation → Resilient computing</span>
+                <span class="skill-tag">Ecological Networks → Distributed systems</span>
+                <span class="skill-tag">Resource Optimization → Efficient computing</span>
+            </div>
+        </section>
+    </div>
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Combined biological and computational characters
+        const bioChars = 'ACGT';
+        const techChars = '01Ψ∞λ∑∫';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        
+        // Colors for the different modes
+        const colors = {
+            bio: ['#e2552c', '#f64c02'],
+            tech: ['#33ff33', '#36a3d9'],
+            transition: ['#9933cc', '#36a3d9']
+        };
+
+        let mode = 'bio';
+        let transitionProgress = 0;
+        const transitionDuration = 2000; // ms
+        let lastTransitionTime = 0;
+        
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const currentTime = Date.now();
+            
+            // Check if we should transition to a new mode
+            if (currentTime - lastTransitionTime > 5000) { // Switch every 5 seconds
+                lastTransitionTime = currentTime;
+                mode = mode === 'bio' ? 'tech' : 'bio';
+                transitionProgress = 0;
+            }
+            
+            // Calculate transition progress
+            if (transitionProgress < transitionDuration) {
+                transitionProgress += 16; // Roughly 60fps
+            }
+            
+            // Select character set and color based on current mode and transition
+            let charSet, colorSet;
+            
+            if (transitionProgress < transitionDuration) {
+                // During transition
+                const ratio = transitionProgress / transitionDuration;
+                colorSet = colors.transition;
+                charSet = Math.random() < ratio ? 
+                    (mode === 'bio' ? bioChars : techChars) : 
+                    (mode === 'bio' ? techChars : bioChars);
+            } else {
+                // Stable state
+                charSet = mode === 'bio' ? bioChars : techChars;
+                colorSet = mode === 'bio' ? colors.bio : colors.tech;
+            }
+            
+            // Render the matrix
+            for (let i = 0; i < drops.length; i++) {
+                const colorIndex = Math.floor(Math.random() * colorSet.length);
+                ctx.fillStyle = colorSet[colorIndex];
+                
+                const charIndex = Math.floor(Math.random() * charSet.length);
+                const text = charSet[charIndex];
+                
+                ctx.font = `${fontSize}px monospace`;
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 67);
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
